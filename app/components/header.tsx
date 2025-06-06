@@ -99,15 +99,17 @@ export function Header() {
         <div className="flex items-center justify-between py-3 sm:py-4 w-full">
           {/* Logo */}
           <div className="flex items-center space-x-2 flex-shrink-0">
-            <div className="bg-gradient-to-r from-purple-600 to-pink-600 p-1.5 sm:p-2 rounded-full">
-              <Crown className="h-5 w-5 sm:h-6 sm:w-6 lg:h-8 lg:w-8 text-white" />
-            </div>
-            <div className="min-w-0">
-              <h1 className="text-base sm:text-lg lg:text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent truncate">
-                LuxeJewels
-              </h1>
-              <p className="text-xs text-gray-500 hidden sm:block truncate">Premium Jewelry Store</p>
-            </div>
+            <Link href="/" className="flex items-center space-x-2">
+              <div className="bg-gradient-to-r from-purple-600 to-pink-600 p-1.5 sm:p-2 rounded-full">
+                <Crown className="h-5 w-5 sm:h-6 sm:w-6 lg:h-8 lg:w-8 text-white" />
+              </div>
+              <div className="min-w-0">
+                <h1 className="text-base sm:text-lg lg:text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent truncate">
+                  LuxeJewels
+                </h1>
+                <p className="text-xs text-gray-500 hidden sm:block truncate">Premium Jewelry Store</p>
+              </div>
+            </Link>
           </div>
 
           {/* Navigation - Hidden on mobile */}
