@@ -87,9 +87,11 @@ export function Header() {
             <span className="hidden md:inline text-xs sm:text-sm whitespace-nowrap">30-day returns</span>
           </div>
           <div className="flex items-center flex-shrink-0">
-            <button className="text-purple-600 hover:text-purple-800 font-medium text-xs sm:text-sm whitespace-nowrap">
-              Seller Dashboard
-            </button>
+            <Link href="/admin">
+              <button className="text-purple-600 hover:text-purple-800 font-medium text-xs sm:text-sm whitespace-nowrap">
+                Seller Dashboard
+              </button>
+            </Link>
           </div>
         </div>
 
@@ -149,22 +151,26 @@ export function Header() {
           {/* Actions */}
           <div className="flex items-center space-x-1 sm:space-x-2 lg:space-x-3 flex-shrink-0">
             {/* Wishlist */}
-            <Button variant="ghost" size="sm" className="relative p-1.5 sm:p-2">
-              <Heart className="h-4 w-4 sm:h-5 sm:w-5" />
-              <Badge className="absolute -top-1 -right-1 sm:-top-2 sm:-right-2 bg-pink-500 text-white min-w-[16px] h-[16px] sm:min-w-[18px] sm:h-[18px] flex items-center justify-center p-0 text-[10px] sm:text-xs">
-                {wishlistItemCount}
-              </Badge>
-            </Button>
+            <Link href="/wishlist">
+              <Button variant="ghost" size="sm" className="relative p-1.5 sm:p-2">
+                <Heart className="h-4 w-4 sm:h-5 sm:w-5" />
+                <Badge className="absolute -top-1 -right-1 sm:-top-2 sm:-right-2 bg-pink-500 text-white min-w-[16px] h-[16px] sm:min-w-[18px] sm:h-[18px] flex items-center justify-center p-0 text-[10px] sm:text-xs">
+                  {wishlistItemCount}
+                </Badge>
+              </Button>
+            </Link>
 
             {/* Cart */}
-            <Button variant="ghost" size="sm" className="relative p-1.5 sm:p-2">
-              <ShoppingCart className="h-4 w-4 sm:h-5 sm:w-5" />
-              {cartItemCount > 0 && (
-                <Badge className="absolute -top-1 -right-1 sm:-top-2 sm:-right-2 bg-purple-500 text-white min-w-[16px] h-[16px] sm:min-w-[18px] sm:h-[18px] flex items-center justify-center p-0 text-[10px] sm:text-xs">
-                  {cartItemCount}
-                </Badge>
-              )}
-            </Button>
+            <Link href="/cart">
+              <Button variant="ghost" size="sm" className="relative p-1.5 sm:p-2">
+                <ShoppingCart className="h-4 w-4 sm:h-5 sm:w-5" />
+                {cartItemCount > 0 && (
+                  <Badge className="absolute -top-1 -right-1 sm:-top-2 sm:-right-2 bg-purple-500 text-white min-w-[16px] h-[16px] sm:min-w-[18px] sm:h-[18px] flex items-center justify-center p-0 text-[10px] sm:text-xs">
+                    {cartItemCount}
+                  </Badge>
+                )}
+              </Button>
+            </Link>
 
             {/* User Menu */}
             {user ? (
