@@ -11,8 +11,32 @@ import { Package, Truck, CheckCircle, Clock, Eye, Download } from "lucide-react"
 import { Header } from "../components/header"
 import { Footer } from "../components/footer"
 
+interface Order {
+  id: string;
+  date: string;
+  status: string;
+  total: number;
+  items: Array<{
+    name: string;
+    image?: string;
+    category: string;
+    quantity: number;
+    price: number;
+  }>;
+  shipping: {
+    firstName: string;
+    lastName: string;
+    address: string;
+    city: string;
+    state: string;
+    zipCode: string;
+    phone: string;
+  };
+  trackingNumber?: string;
+}
+
 export default function OrdersPage() {
-  const [orders, setOrders] = useState([])
+  const [orders, setOrders] = useState<Order[]>([])
   const [user, setUser] = useState(null)
 
   useEffect(() => {
@@ -27,7 +51,11 @@ export default function OrdersPage() {
     }
   }, [])
 
-  const getStatusIcon = (status) => {
+  interface OrderStatus {
+    status: "confirmed" | "processing" | "shipped" | "delivered" | string;
+  }
+
+  const getStatusIcon = (status: OrderStatus["status"]) => {
     switch (status) {
       case "confirmed":
         return <Clock className="h-4 w-4" />
@@ -42,7 +70,15 @@ export default function OrdersPage() {
     }
   }
 
-  const getStatusColor = (status) => {
+  interface OrderStatusColors {
+    "confirmed": string;
+    "processing": string;
+    "shipped": string;
+    "delivered": string;
+    [key: string]: string;
+  }
+
+  const getStatusColor = (status: OrderStatus["status"]): string => {
     switch (status) {
       case "confirmed":
         return "bg-blue-100 text-blue-800"

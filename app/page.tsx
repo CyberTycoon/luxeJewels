@@ -211,13 +211,15 @@ export default function HomePage() {
                     </h1>
                     <h2 className="text-3xl font-semibold mb-4">{slide.subtitle}</h2>
                     <p className="text-xl mb-8 opacity-90">{slide.description}</p>
-                    <Button
-                      size="lg"
-                      className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-8 py-4 text-lg font-semibold rounded-full shadow-2xl transform hover:scale-105 transition-all duration-300"
-                    >
-                      {slide.cta}
-                      <ArrowRight className="ml-2 h-5 w-5" />
-                    </Button>
+                    <Link href="/products">
+                      <Button
+                        size="lg"
+                        className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-8 py-4 text-lg font-semibold rounded-full shadow-2xl transform hover:scale-105 transition-all duration-300"
+                      >
+                        {slide.cta}
+                        <ArrowRight className="ml-2 h-5 w-5" />
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               </div>

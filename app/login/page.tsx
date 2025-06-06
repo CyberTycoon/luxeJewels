@@ -22,7 +22,12 @@ export default function LoginPage() {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState("")
 
-  const handleInputChange = (field, value) => {
+  interface FormFields {
+    email: string;
+    password: string;
+  }
+
+  const handleInputChange = (field: keyof FormFields, value: string): void => {
     setFormData((prev) => ({
       ...prev,
       [field]: value,
@@ -30,7 +35,12 @@ export default function LoginPage() {
     setError("")
   }
 
-  const handleSubmit = async (e) => {
+  interface User {
+    email: string;
+    password: string;
+  }
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault()
     setIsLoading(true)
     setError("")
@@ -38,8 +48,8 @@ export default function LoginPage() {
     // Simulate login process
     setTimeout(() => {
       // Check if user exists in localStorage
-      const users = JSON.parse(localStorage.getItem("users") || "[]")
-      const user = users.find((u) => u.email === formData.email && u.password === formData.password)
+      const users: User[] = JSON.parse(localStorage.getItem("users") || "[]")
+      const user: User | undefined = users.find((u: User) => u.email === formData.email && u.password === formData.password)
 
       if (user) {
         // Login successful
@@ -49,7 +59,7 @@ export default function LoginPage() {
         // Login failed
         setError("Invalid email or password")
       }
-      setIsLoading(false)
+
     }, 1500)
   }
 
