@@ -312,7 +312,7 @@ export default function HomePage() {
                         SALE
                       </Badge>
                     )}
-                    <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute top-4 right-4 transition-opacity duration-300">
                       <Button
                         onClick={() => {
                           addToWishlist(product)

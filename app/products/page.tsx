@@ -430,7 +430,7 @@ export default function ProductsPage() {
                           SALE
                         </Badge>
                       )}
-                      <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="absolute top-4 right-4 transition-opacity duration-300">
                         <Button onClick={() => addToWishlist(product)} size="sm" variant="secondary" className="rounded-full p-2 bg-white/90 hover:bg-white">
                           <Heart className="h-4 w-4" />
                         </Button>

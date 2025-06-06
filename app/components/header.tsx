@@ -1,12 +1,11 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { ShoppingCart, User, Heart, Menu, Crown, Sparkles, LogOut, Settings, Package } from "lucide-react"
+import Link from "next/link"
 
 interface CartItem {
   quantity?: number;
@@ -78,39 +77,39 @@ export function Header() {
   const wishlistItemCount = wishlist.length
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-lg border-b border-purple-100">
-      <div className="container mx-auto px-6">
+    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-lg border-b border-purple-100 w-full">
+      <div className="w-full px-3 sm:px-4 lg:px-6">
         {/* Top Bar */}
-        <div className="flex items-center justify-between py-2 text-sm border-b border-purple-100">
-          <div className="flex items-center space-x-4 text-gray-600">
-            <span>Free shipping on orders over $500</span>
+        <div className="flex items-center justify-between py-2 text-sm border-b border-purple-100 w-full">
+          <div className="flex items-center space-x-2 sm:space-x-4 text-gray-600 flex-1 min-w-0">
+            <span className="text-xs sm:text-sm truncate">Free shipping on orders over $500</span>
             <span className="hidden md:inline">•</span>
-            <span className="hidden md:inline">30-day returns</span>
+            <span className="hidden md:inline text-xs sm:text-sm whitespace-nowrap">30-day returns</span>
           </div>
-          <div className="flex items-center space-x-4">
-            <Link href="/admin" className="text-purple-600 hover:text-purple-800 font-medium">
+          <div className="flex items-center flex-shrink-0">
+            <button className="text-purple-600 hover:text-purple-800 font-medium text-xs sm:text-sm whitespace-nowrap">
               Seller Dashboard
-            </Link>
+            </button>
           </div>
         </div>
 
         {/* Main Header */}
-        <div className="flex items-center justify-between py-4">
+        <div className="flex items-center justify-between py-3 sm:py-4 w-full">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <div className="bg-gradient-to-r from-purple-600 to-pink-600 p-2 rounded-full">
-              <Crown className="h-8 w-8 text-white" />
+          <div className="flex items-center space-x-2 flex-shrink-0">
+            <div className="bg-gradient-to-r from-purple-600 to-pink-600 p-1.5 sm:p-2 rounded-full">
+              <Crown className="h-5 w-5 sm:h-6 sm:w-6 lg:h-8 lg:w-8 text-white" />
             </div>
-            <div>
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+            <div className="min-w-0">
+              <h1 className="text-base sm:text-lg lg:text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent truncate">
                 LuxeJewels
               </h1>
-              <p className="text-xs text-gray-500">Premium Jewelry Store</p>
+              <p className="text-xs text-gray-500 hidden sm:block truncate">Premium Jewelry Store</p>
             </div>
-          </Link>
+          </div>
 
-          {/* Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
+          {/* Navigation - Hidden on mobile */}
+          <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8 flex-1 justify-center px-4">
             <Link href="/products" className="text-gray-700 hover:text-purple-600 font-medium transition-colors">
               All Products
             </Link>
@@ -148,24 +147,24 @@ export function Header() {
           </nav>
 
           {/* Actions */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-1 sm:space-x-2 lg:space-x-3 flex-shrink-0">
             {/* Wishlist */}
-            <Link href='/wishlist'>
-              <Button variant="ghost" size="sm" className="relative">
-                <Heart className="h-5 w-5" />
-                <Badge className="absolute -top-2 -right-2 bg-pink-500 text-white text-xs">{wishlistItemCount}</Badge>
-              </Button>
-            </Link>
+            <Button variant="ghost" size="sm" className="relative p-1.5 sm:p-2">
+              <Heart className="h-4 w-4 sm:h-5 sm:w-5" />
+              <Badge className="absolute -top-1 -right-1 sm:-top-2 sm:-right-2 bg-pink-500 text-white min-w-[16px] h-[16px] sm:min-w-[18px] sm:h-[18px] flex items-center justify-center p-0 text-[10px] sm:text-xs">
+                {wishlistItemCount}
+              </Badge>
+            </Button>
 
             {/* Cart */}
-            <Link href="/cart">
-              <Button variant="ghost" size="sm" className="relative">
-                <ShoppingCart className="h-5 w-5" />
-                {cartItemCount > 0 && (
-                  <Badge className="absolute -top-2 -right-2 bg-purple-500 text-white text-xs">{cartItemCount}</Badge>
-                )}
-              </Button>
-            </Link>
+            <Button variant="ghost" size="sm" className="relative p-1.5 sm:p-2">
+              <ShoppingCart className="h-4 w-4 sm:h-5 sm:w-5" />
+              {cartItemCount > 0 && (
+                <Badge className="absolute -top-1 -right-1 sm:-top-2 sm:-right-2 bg-purple-500 text-white min-w-[16px] h-[16px] sm:min-w-[18px] sm:h-[18px] flex items-center justify-center p-0 text-[10px] sm:text-xs">
+                  {cartItemCount}
+                </Badge>
+              )}
+            </Button>
 
             {/* User Menu */}
             {user ? (
@@ -218,15 +217,15 @@ export function Header() {
             )}
 
             {/* Mobile Menu */}
-            <Button variant="ghost" size="sm" className="lg:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-              <Menu className="h-5 w-5" />
+            <Button variant="ghost" size="sm" className="lg:hidden p-1.5 sm:p-2" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+              <Menu className="h-4 w-4 sm:h-5 sm:w-5" />
             </Button>
           </div>
         </div>
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="lg:hidden py-4 border-t border-purple-100">
+          <div className="lg:hidden py-4 border-t border-purple-100 w-full">
             <nav className="flex flex-col space-y-4">
               <Link href="/products" className="text-gray-700 hover:text-purple-600 font-medium">
                 All Products
